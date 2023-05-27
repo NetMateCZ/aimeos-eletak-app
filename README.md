@@ -1,66 +1,41 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Postup řešení Aimeos pro E-letak
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Nastavení prostředí
+---
+1. **Instalace a konfigurace systému Aimeos**
+    * Nainstalujme Laravel, nastavíme jeho prostředí, poté nainstalujeme Aimeos pomocí nástroje Composer a inicializujeme jej.
 
-## About Laravel
+<br>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Konfigurace s databází
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. **Databáze**.
+    * Konfigurace připojení k databázi v konfiguračním souboru Laravel.
+2. **Datový model**.
+    * Vytvoření modelů interiéru kuchyně, domácích spotřebičů (název, cena, vlastnosti).
+    * Vytvoření migrací pro zadání modelů do databáze.
+3. **Vkládání dat do databáze**.
+    * Vkládání dat o kuchyňském nábytku, spotřebičích atd. do databáze.
+    * Vytvoření kategorií a atributů pro snadné třídění a filtrování zboží.
+    * Přizpůsobíme ceny, dostupnost
 
-## Learning Laravel
+<br>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Vytvořit části front-endu a back-endu
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Po inicializaci Aimeosu získáme základní funkce jako filtry, řazení do seznamu, vyhledávání zboží, přidávání zboží do košíku, nákupní proces (pouze editace nákupních polí a přidání platebního systému), stránku zboží, panel administrátora.
 
-## Laravel Sponsors
+1. **Úprava hlavních stránek**.
+    * Stylování stránek pro zobrazení seznamu produktů, nákupního košíku, profilu, stránky produktu, vyhledávání produktů atd.
+2. **Základní funkce**.
+    * Nastavení filtrů podle kategorií, atributů a dalších parametrů vyhledávání.
+    * Funkce pro přidávání položek do košíku, aktualizaci množství položek na skladě, pokladnu.
+3. **Nastavení platby za objednávku**.
+    * Integrace platebního systému pro transakce
+4. **Dokončení zbývajících detailů webu**.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+S ohledem na to, že mnoho věcí je připraveno předem přímo z krabice, stačí jen, aby vše hezky vypadalo, odstranit všechny chyby, nastavit platební systém, zpracování objednávek atd.
